@@ -1,0 +1,1783 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>杨教练首页</title>
+<style type="text/css">
+*{margin:0; padding:0; list-style:none; text-decoration:none;}
+img{display:block;}
+a{color:#000000; cursor:pointer}
+body{width:1003px; margin:0 auto; font-size:12px;}
+.wrapper{width:1003px; margin:0 auto; overflow:hidden;}
+.fl{float:left} .fr{float:right;}
+.header{background:url(images/headbg.jpg) repeat-x; height:170px;}
+.nav li a{display:block; color:#fff; background:url(images/nav-line.jpg) no-repeat right top;}
+.nav-none{background:none !important;}
+.nav li{ float:left; width:100px; line-height:36px; text-align:center;}
+ul li a:hover {color:#ff0;}
+/* container */
+.container{width:1004px;height:270px;margin:5px auto 0 auto;}
+.container a img{width:1004px;height:270px}
+.container img{border-bottom-style:none;border-right-style:none;border-top-style:none;border-left-style:none}
+.td_f a img{padding-bottom:0px;margin:0px;padding-left:0px;padding-right:0px;padding-top:0px}
+.num{position:absolute;width:90px;float:right;top:245px;left:910px}
+.num li{text-align:center;line-height:15px;margin:1px;width:15px;font-family:arial;background:url(../images/flashbutton.gif) no-repeat -15px 0px;float:left;height:15px;color:#86a2b8;font-size:12px;cursor:pointer}
+.num li.on{line-height:15px;width:15px;background:url(images/flashbutton.gif) no-repeat;height:15px;color:#ffffff}
+.title {
+    font-weight: bold;
+    font-size: 14px;
+}
+.car_bg {
+    background: url(images/xclc.jpg);
+    height: 183px;
+    background-repeat: no-repeat;
+}
+
+.title_lmbg {
+    background: url(images/title_lmbg.jpg);
+    height: 29px;
+    background-repeat: no-repeat;
+}
+.title_border {
+    border-bottom: 1px solid #bbbbbb;
+    border-left: 1px solid #bbbbbb;
+    border-right: 1px solid #bbbbbb;
+}
+
+.main_nr {
+    background: url(images/index_38.jpg);
+    height: 29px;
+    background-repeat: no-repeat;
+}
+.footer_bg{
+	 background:url(images/footbg.jpg); height:109px;  background-repeat:repeat-x;
+	}
+.footer_nr{ line-height:24px; text-align:center;}
+
+</style>
+</head>
+
+<body>
+<div class="header">
+	<div class="logo"><img src="images/logo.jpg"></div><!--logo-->
+    <div class="nav">
+	<ul>
+        <li><a href="http://www.ahjdjx.com/default.asp" class="menu" id="menuA1">网站首页</a></li>	
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=2" class="menu" id="menuA1">金盾简介</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=4" class="menu" id="menuA1">新闻动态</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=11" class="menu" id="menuA1">考试公告</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=5" class="menu" id="menuA1">驾校风采</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=3" class="menu" id="menuA1">报名处地点</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=6" class="menu" id="menuA1">教学安全</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=7" class="menu" id="menuA1">学车流程</a></li>
+		<li><a href="http://www.ahjdjx.com/message.asp" class="menu" id="menuA1">在线留言</a></li>
+		<li><a href="http://www.ahjdjx.com/publist.asp?base_id=8" class="menu" id="menuA1">联系我们</a></li>
+    </ul>
+</div><!--nav-->
+</div><!--header-->
+<div class="focus-pic">
+<script type="text/javascript">
+var $ = function (id) {
+	return "string" == typeof id ? document.getElementById(id) : id;
+};
+
+var Extend = function(destination, source) {
+	for (var property in source) {
+		destination[property] = source[property];
+	}
+	return destination;
+}
+
+var CurrentStyle = function(element){
+	return element.currentStyle || document.defaultView.getComputedStyle(element, null);
+}
+
+var Bind = function(object, fun) {
+	var args = Array.prototype.slice.call(arguments).slice(2);
+	return function() {
+		return fun.apply(object, args.concat(Array.prototype.slice.call(arguments)));
+	}
+}
+
+var Tween = {
+	Quart: {
+		easeOut: function(t,b,c,d){
+			return -c * ((t=t/d-1)*t*t*t - 1) + b;
+		}
+	},
+	Back: {
+		easeOut: function(t,b,c,d,s){
+			if (s == undefined) s = 1.70158;
+			return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+		}
+	},
+	Bounce: {
+		easeOut: function(t,b,c,d){
+			if ((t/=d) < (1/2.75)) {
+				return c*(7.5625*t*t) + b;
+			} else if (t < (2/2.75)) {
+				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+			} else if (t < (2.5/2.75)) {
+				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+			} else {
+				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+			}
+		}
+	}
+}
+
+
+//容器对象,滑动对象,切换数量
+var SlideTrans = function(container, slider, count, options) {
+	this._slider = $(slider);
+	this._container = $(container);//容器对象
+	this._timer = null;//定时器
+	this._count = Math.abs(count);//切换数量
+	this._target = 0;//目标值
+	this._t = this._b = this._c = 0;//tween参数
+	
+	this.Index = 0;//当前索引
+	
+	this.SetOptions(options);
+	
+	this.Auto = !!this.options.Auto;
+	this.Duration = Math.abs(this.options.Duration);
+	this.Time = Math.abs(this.options.Time);
+	this.Pause = Math.abs(this.options.Pause);
+	this.Tween = this.options.Tween;
+	this.onStart = this.options.onStart;
+	this.onFinish = this.options.onFinish;
+	
+	var bVertical = !!this.options.Vertical;
+	this._css = bVertical ? "top" : "left";//方向
+	
+	//样式设置
+	var p = CurrentStyle(this._container).position;
+	p == "relative" || p == "absolute" || (this._container.style.position = "relative");
+	this._container.style.overflow = "hidden";
+	this._slider.style.position = "absolute";
+	
+	this.Change = this.options.Change ? this.options.Change :
+		this._slider[bVertical ? "offsetHeight" : "offsetWidth"] / this._count;
+};
+SlideTrans.prototype = {
+  //设置默认属性
+  SetOptions: function(options) {
+	this.options = {//默认值
+		Vertical:	true,//是否垂直方向（方向不能改）
+		Auto:		true,//是否自动
+		Change:		0,//改变量
+		Duration:	50,//滑动持续时间
+		Time:		10,//滑动延时
+		Pause:		4000,//停顿时间(Auto为true时有效)
+		onStart:	function(){},//开始转换时执行
+		onFinish:	function(){},//完成转换时执行
+		Tween:		Tween.Quart.easeOut//tween算子
+	};
+	Extend(this.options, options || {});
+  },
+  //开始切换
+  Run: function(index) {
+	//修正index
+	index == undefined && (index = this.Index);
+	index < 0 && (index = this._count - 1) || index >= this._count && (index = 0);
+	//设置参数
+	this._target = -Math.abs(this.Change) * (this.Index = index);
+	this._t = 0;
+	this._b = parseInt(CurrentStyle(this._slider)[this.options.Vertical ? "top" : "left"]);
+	this._c = this._target - this._b;
+	
+	this.onStart();
+	this.Move();
+  },
+  //移动
+  Move: function() {
+	clearTimeout(this._timer);
+	//未到达目标继续移动否则进行下一次滑动
+	if (this._c && this._t < this.Duration) {
+		this.MoveTo(Math.round(this.Tween(this._t++, this._b, this._c, this.Duration)));
+		this._timer = setTimeout(Bind(this, this.Move), this.Time);
+	}else{
+		this.MoveTo(this._target);
+		this.Auto && (this._timer = setTimeout(Bind(this, this.Next), this.Pause));
+	}
+  },
+  //移动到
+  MoveTo: function(i) {
+	this._slider.style[this._css] = i + "px";
+  },
+  //下一个
+  Next: function() {
+	this.Run(++this.Index);
+  },
+  //上一个
+  Previous: function() {
+	this.Run(--this.Index);
+  },
+  //停止
+  Stop: function() {
+	clearTimeout(this._timer); this.MoveTo(this._target);
+  }
+};
+</script>
+<div id="idContainer2" class="container">
+	<table id="idSlider2" border="0" cellSpacing="0" cellPadding="0">
+		<tbody>
+			<tr>
+				<td class="td_f"><a href="#" target="_blank"><img src="images/01.jpg"></a></td>
+				<td class="td_f"><a href="#" target="_blank"><img src="images/02.jpg"></a></td>
+				<td class="td_f"><a href="#" target="_blank"><img src="images/03.jpg"></a></td>
+				<td class="td_f"><a href="#" target="_blank"><img src="images/04.jpg"></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<ul id="idNum" class="num"></ul>
+</div>
+<script type="text/javascript">
+var forEach = function(array, callback, thisObject){
+	if(array.forEach){
+		array.forEach(callback, thisObject);
+	}else{
+		for (var i = 0, len = array.length; i < len; i++) { callback.call(thisObject, array[i], i, array); }
+	}
+}
+
+var st = new SlideTrans("idContainer2", "idSlider2", 4, { Vertical: false });
+
+var nums = [];
+//插入数字
+for(var i = 0, n = st._count - 1; i <= n;){
+	(nums[i] = $("idNum").appendChild(document.createElement("li"))).innerHTML = ++i;
+}
+
+forEach(nums, function(o, i){
+	o.onmouseover = function(){ o.className = "on"; st.Auto = false; st.Run(i); }
+	o.onmouseout = function(){ o.className = ""; st.Auto = true; st.Run(); }
+})
+
+//设置按钮样式
+st.onStart = function(){
+	forEach(nums, function(o, i){ o.className = st.Index == i ? "on" : ""; })
+}
+st.Run();
+</script>
+</div><!--focus-pic-->
+<table width="997" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+          <td style="margin-top: 4px;
+    display: block;
+    height: 33px;"><img src="images/xszp.jpg"></td>
+          </tr>
+  <tr>
+    <td align="center" valign="bottom" class="car_bg" style="padding-bottom:5px; background:url(images/xszp.jpg)">
+      <table width="1003" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          
+          <tr>
+            <td align="center"><img src="images/1.jpg" width="500" height="667" alt=""/></td>
+            <td align="center"><img src="images/2.jpg" width="500" height="667" alt=""/></td>
+          </tr>
+          <tr>
+    <td height="10"></td>
+  </tr>
+          <tr>
+            <td align="center"><img src="images/3.jpg" width="500" height="667" alt=""/></td>
+            <td align="center"><img src="images/3.jpg" width="500" height="667" alt=""/></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    
+    </td>
+  </tr>
+  
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td align="center" valign="bottom" class="car_bg" style="padding-bottom:5px"><img src="images/r2_c2.jpg" width="986" height="145"></td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td style="background:url(images/pic.jpg); width:997px; height:93px; background-repeat:no-repeat;"></td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+        <td width="243" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td class="title_lmbg"><table width="87%" border="0" align="right" cellpadding="0" cellspacing="0" style="padding-top:2px;">
+              <tbody><tr>
+                <td width="79%" class="title">汽车常识</td>
+                <td width="21%" class="more"><a href="http://www.ahjdjx.com/publist.asp?second_id=6001">+更多</a></td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+          <tr>
+            <td height="178" valign="top" class="title_border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=2358">
+            <span style="line-height:150%">夏天开车易犯困 10招包管用<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=2357">
+            <span style="line-height:150%">夏天，为什么不能穿拖鞋开车<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=2356">
+            <span style="line-height:150%">夏天，把孩子单独留在车内到底有多危<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=2355">
+            <span style="line-height:150%">夏天，高温行车有“六防”<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=39">
+            <span style="line-height:150%">金盾驾校教你-小毛病让业余也可治好<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=38">
+            <span style="line-height:150%">安了三元催化器为何爱熄火？<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=37">
+            <span style="line-height:150%">给你的座骑上保险 新车旧车各有其招<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+  </tr>
+</tbody></table>
+</td>
+          </tr>
+        </tbody></table></td>
+        <td width="8"></td>
+        <td width="243" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td class="title_lmbg"><table width="87%" border="0" align="right" cellpadding="0" cellspacing="0" style="padding-top:2px;">
+              <tbody><tr>
+                <td width="80%" class="title">驾驶技能</td>
+                <td width="20%" class="more"><a href="http://www.ahjdjx.com/publist.asp?second_id=6002">+更多</a></td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+          <tr>
+            <td height="178" valign="top" class="title_border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=45">
+            <span style="line-height:150%">金盾驾校专家支招-巧用发动机制动避<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=44">
+            <span style="line-height:150%">金盾驾校建议买节油产品不如养成良好<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=43">
+            <span style="line-height:150%">行车常用技巧之山路驾驶安全与技巧-<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=42">
+            <span style="line-height:150%">不再为高油价烦恼 金盾教你如何省油<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=41">
+            <span style="line-height:150%">避免疲劳驾驶 让行车不再成为一件痛<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=40">
+            <span style="line-height:150%">金盾教你用汽车要注意小心伤不起<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+  </tr>
+</tbody></table>
+</td>
+          </tr>
+        </tbody></table></td>
+        <td width="8"></td>
+        <td width="243" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td class="title_lmbg"><table width="87%" border="0" align="right" cellpadding="0" cellspacing="0" style="padding-top:2px;">
+              <tbody><tr>
+                <td width="83%" class="title">管理制度</td>
+                <td width="17%" class="more"><a href="http://www.ahjdjx.com/publist.asp?second_id=6003">+更多</a></td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+          <tr>
+            <td height="178" valign="top" class="title_border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=941">
+            <span style="line-height:150%">金盾驾校安全管理制度<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=498">
+            <span style="line-height:150%">金盾驾校学员管理制度<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=497">
+            <span style="line-height:150%">金盾驾校训练场管理制度<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+  </tr>
+</tbody></table>
+</td>
+          </tr>
+        </tbody></table></td>
+        <td width="9"></td>
+        <td width="243" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td class="title_lmbg"><table width="87%" border="0" align="right" cellpadding="0" cellspacing="0" style="padding-top:2px;">
+              <tbody><tr>
+                <td width="80%" class="title">法律法规</td>
+                <td width="20%" class="more"><a href="http://www.ahjdjx.com/publist.asp?second_id=6004">+更多</a></td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+          <tr>
+            <td height="178" valign="top" class="title_border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=1819">
+            <span style="line-height:150%">机动车驾驶证申领和使用规定<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=1242">
+            <span style="line-height:150%">关于印发《合肥市机动车驾驶员培训收<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=571">
+            <span style="line-height:150%">中华人民共和国安全生产法<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=567">
+            <span style="line-height:150%">新《安全生产法》宣传贯彻重点<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=566">
+            <span style="line-height:150%">国务院安委会办公室公开信<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=496">
+            <span style="line-height:150%">公安部第123号令附件<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+    <td style="padding-left:6px; padding-right:6px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="">
+        <tbody><tr>
+          <td width="20" height="25" align="left" valign="middle">
+		  
+          ·
+          
+          </td>
+          <td height="25"><a href="http://www.ahjdjx.com/details.asp?id=495">
+            <span style="line-height:150%">《机动车驾驶证申领和使用规定》<span>
+          </span></span></a> </td>
+          
+        </tr>
+    </tbody></table></td>
+    </tr><tr>
+  </tr>
+</tbody></table>
+</td>
+          </tr>
+        </tbody></table></td>
+      </tr>
+    </tbody></table></td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+        <td class="main_nr"><table width="98%" border="0" align="right" cellpadding="0" cellspacing="0" style="padding-top:3px;">
+          <tbody><tr>
+            <td width="96%" style="font-weight:bold; font-size:14px; color:#FFF;">驾校风采</td>
+            <td width="4%" class="more"><a href="http://www.ahjdjx.com/publist.asp?second_id=5001">+更多</a></td>
+          </tr>
+        </tbody></table></td>
+      </tr>
+      <tr>
+        <td height="175" class="title_border" style="padding-top:5px; padding-left:2px"><div id="demo_tdsf" style="overflow:hidden; width:990px;height:170px;">
+					<table width="150" height="170" border="0" align="center" cellpadding="0" cellspacing="0" cellspace="0">
+					  <tbody><tr>
+						<td align="center" valign="top" id="demo1_tdsf"><table width="150" height="125" border="0" align="left" cellpadding="0" cellspacing="0" cellspace="0">
+							<tbody><tr>
+							  <td width="150" align="center" valign="middle">
+							   
+
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1301"><img src="images/2016012348724921.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1301">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1300"><img src="images/2016012348710081.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1300">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1299"><img src="images/2016012348696249.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1299">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1298"><img src="images/2016012348682937.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1298">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1297"><img src="images/2016012348565581.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1297">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1205"><img src="images/2015121844587501.JPG" width="185" height="130" alt="消防演练活动" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1205">
+            消防演练活动
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1204"><img src="images/2015121844593781.JPG" width="185" height="130" alt="消防演练活动" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1204">
+            消防演练活动
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1202"><img src="images/2015121844608437.JPG" width="185" height="130" alt="消防演练活动" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1202">
+            消防演练活动
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1187"><img src="images/2015121358402689.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1187">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1186"><img src="images/2015121358410565.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1186">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1185"><img src="images/2015121358417625.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1185">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1183"><img src="images/2015121358464157.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1183">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1182"><img src="images/2015121358497109.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1182">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1163"><img src="images/2015121045455281.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1163">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1164"><img src="images/2015121045463657.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1164">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1162"><img src="images/2015121045472393.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1162">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1161"><img src="images/2015121045481221.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1161">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1160"><img src="images/2015121045490081.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1160">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=450"><img src="images/2014062460766969.jpg" width="185" height="130" alt="多台教练车" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=450">
+            多台教练车
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=451"><img src="images/2014062460879313.jpg" width="185" height="130" alt="整行风宣传" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=451">
+            整行风宣传
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=458"><img src="images/2014062461204893.jpg" width="185" height="130" alt="整行风宣传" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=458">
+            整行风宣传
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=452"><img src="images/2014062460909893.jpg" width="185" height="130" alt="文明交通劝导服务" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=452">
+            文明交通劝导服务
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=454"><img src="images/2014062461049109.jpg" width="185" height="130" alt="安全教育培训演练" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=454">
+            安全教育培训演练
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=455"><img src="images/2014062461088657.jpg" width="185" height="130" alt="教练车安全隐患排查" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=455">
+            教练车安全隐患排查
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=457"><img src="images/2014062461154829.jpg" width="185" height="130" alt="训练场一角" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=457">
+            训练场一角
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1010"><img src="images/2015092058185281.jpg" width="185" height="130" alt="西二环大型综合训练场" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1010">
+            西二环大型综合训练场
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1007"><img src="images/2015092058096393.jpg" width="185" height="130" alt="西二环大型综合训练场" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1007">
+            西二环大型综合训练场
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+  </tr>
+</tbody></table>
+
+							  </td>
+							</tr>
+						</tbody></table></td>
+						<td width="1" valign="top" id="demo2_tdsf"><table width="150" height="125" border="0" align="left" cellpadding="0" cellspacing="0" cellspace="0">
+							<tbody><tr>
+							  <td width="150" align="center" valign="middle">
+							   
+
+<table width="100" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1301"><img src="images/2016012348724921.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1301">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1300"><img src="images/2016012348710081.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1300">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1299"><img src="images/2016012348696249.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1299">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1298"><img src="images/2016012348682937.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1298">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1297"><img src="images/2016012348565581.jpg" width="185" height="130" alt="新年钜惠 温暖实惠到您家" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1297">
+            新年钜惠 温暖实惠到您家
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1205"><img src="images/2015121844587501.JPG" width="185" height="130" alt="消防演练活动" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1205">
+            消防演练活动
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1204"><img src="images/2015121844593781.JPG" width="185" height="130" alt="消防演练活动" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1204">
+            消防演练活动
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1202"><img src="images/2015121844608437.JPG" width="185" height="130" alt="消防演练活动" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1202">
+            消防演练活动
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1187"><img src="images/2015121358402689.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1187">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1186"><img src="images/2015121358410565.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1186">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1185"><img src="images/2015121358417625.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1185">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1183"><img src="images/2015121358464157.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1183">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1182"><img src="images/2015121358497109.JPG" width="185" height="130" alt="员工礼仪培训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1182">
+            员工礼仪培训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1163"><img src="images/2015121045455281.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1163">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1164"><img src="images/2015121045463657.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1164">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1162"><img src="images/2015121045472393.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1162">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1161"><img src="images/2015121045481221.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1161">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1160"><img src="images/2015121045490081.JPG" width="185" height="130" alt="2015年教练员军训" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1160">
+            2015年教练员军训
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=450"><img src="images/2014062460766969.jpg" width="185" height="130" alt="多台教练车" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=450">
+            多台教练车
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=451"><img src="images/2014062460879313.jpg" width="185" height="130" alt="整行风宣传" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=451">
+            整行风宣传
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=458"><img src="images/2014062461204893.jpg" width="185" height="130" alt="整行风宣传" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=458">
+            整行风宣传
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=452"><img src="images/2014062460909893.jpg" width="185" height="130" alt="文明交通劝导服务" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=452">
+            文明交通劝导服务
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=454"><img src="images/2014062461049109.jpg" width="185" height="130" alt="安全教育培训演练" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=454">
+            安全教育培训演练
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=455"><img src="images/2014062461088657.jpg" width="185" height="130" alt="教练车安全隐患排查" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=455">
+            教练车安全隐患排查
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=457"><img src="images/2014062461154829.jpg" width="185" height="130" alt="训练场一角" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=457">
+            训练场一角
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1010"><img src="images/2015092058185281.jpg" width="185" height="130" alt="西二环大型综合训练场" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1010">
+            西二环大型综合训练场
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+    <td valign="top" style="padding-left:5px; padding-right:5px;"><table border="0" cellpadding="0" cellspacing="0" width="185" height="130">
+        <tbody><tr>
+          <td valign="middle" align="center" style="border:#ffffff solid 2px;"><table>
+              <tbody><tr>
+                <td style="border:#999999 solid 1px; background-color:#FFFFFF; padding:2px;">
+                  <a href="http://www.ahjdjx.com/details.asp?id=1007"><img src="images/2015092058096393.jpg" width="185" height="130" alt="西二环大型综合训练场" border="0"></a></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        
+        <tr>
+          <td height="25" align="center" valign="middle" style="padding-top:5px; padding-bottom:5px;"><a href="http://www.ahjdjx.com/details.asp?id=1007">
+            西二环大型综合训练场
+            </a> </td>
+        </tr>
+        
+    </tbody></table></td>
+    
+  </tr>
+</tbody></table>
+
+							  </td>
+							</tr>
+						</tbody></table></td>
+					  </tr>
+					</tbody></table>
+			  </div>					
+		<script language="javascript">
+			var speed_tdsf=30
+			demo2_tdsf.innerHTML=demo1_tdsf.innerHTML
+			function Marquee_tdsf(){
+			if(demo2_tdsf.offsetWidth-demo_tdsf.scrollLeft<=0)
+			demo_tdsf.scrollLeft-=demo1_tdsf.offsetWidth
+			else{
+			demo_tdsf.scrollLeft++
+			}
+			}
+			var MyMar_tdsf=setInterval(Marquee_tdsf,speed_tdsf)
+			demo_tdsf.onmouseover=function() {clearInterval(MyMar_tdsf)}
+			demo_tdsf.onmouseout=function() {MyMar_tdsf=setInterval(Marquee_tdsf,speed_tdsf)}
+		</script>
+</td>
+      </tr>
+    </tbody></table></td>
+  </tr>
+  </tbody>
+  </table>
+<table width="1003" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td class="footer_bg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+        <td align="center" class="footer_nr"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td width="100" height="120"><img src="images/ewm.jpg" width="100" height="100"></td>
+            <td width="50">&nbsp;</td>
+            <td><div>版权所有：合肥金盾驾驶培训学校 <a href="http://www.miitbeian.gov.cn">网站备案/许可证号：皖ICP备11015800号</a>&nbsp;&nbsp;&nbsp; </div>
+<div><a href="http://www.ahjdjx.com"><strong>合肥金盾驾校</strong></a>唯一官网欢迎咨询金盾驾校网址|学费|地址|教练|训练场|校长相关信息! <br>
+<br>
+咨询电话：0551-63465741&nbsp;&nbsp;&nbsp;&nbsp;63464288 电子信箱：<a href="mailto:webmaster@goldong.com">webmaster@goldong.com</a></div></td>
+          </tr>
+        </tbody></table></td>
+      </tr>
+    </tbody></table></td>
+  </tr>
+</tbody></table>
+
+</body>
+</html>
